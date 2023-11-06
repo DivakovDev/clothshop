@@ -2,7 +2,7 @@
 
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, BellIcon, XMarkIcon, ShoppingBagIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
     { name: 'Women', href: '#', current: false },
@@ -69,7 +69,7 @@ export const NavigationBar = () => {
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
-                  <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                  <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
                 </button>
                 <button
                   type="button"

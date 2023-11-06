@@ -101,7 +101,13 @@ export const Hero = () => {
                 href="#"
                 className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
               >
-                Shop Collection
+                Women&apos;s collection
+              </a>
+              <a
+                href="#"
+                className="inline-block mx-4 rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
+              >
+                Men&apos;s collection
               </a>
             </div>
           </div>
