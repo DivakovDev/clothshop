@@ -6,7 +6,7 @@ import {
   Bars3Icon,
   BellIcon,
   XMarkIcon,
-  ShoppingCartIcon,
+  ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 
 const navigation = [
@@ -72,7 +72,7 @@ export const NavigationBar = () => {
                 <Menu as="div" className="relative inline-block text-left">
                   <div>
                     <Menu.Button className="relative mx-2 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                    <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
                     </Menu.Button>
                   </div>
 
@@ -85,20 +85,18 @@ export const NavigationBar = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="text-center">
-                        <div className="px-4 py-4  pb-4 border-b-2">
-                          <p>Your Cart is empty</p>
+                    <Menu.Items className="absolute right-0 z-10 w-72 origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="p-6">
+                        <div className="pb-4 border-b-2 text-left">
+                          <p className="text-md">Your shopping bag is empty</p>
                         </div>
-                        <div className="px-4 py-2 text-sm rounded-b-lg text-white bg-indigo-600 hover:bg-indigo-700">
-                          <button>
-                            <a
-                              href="#"
-                              className="font-medium"
-                            >
-                              See your Cart
-                            </a>
-                          </button>
+                        <div className="flex flex-row py-2 text-md justify-between border-b-2">
+                          <p>Order value</p>
+                          <span>€0.00</span>
+                        </div>
+                        <div className="flex flex-row py-2 text-lg font-medium rounded-b-lg justify-between">
+                          <p>Total</p>
+                          <span>€0.00</span>
                         </div>
                       </div>
                     </Menu.Items>
@@ -126,26 +124,22 @@ export const NavigationBar = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute text-center right-0 z-10 mt-2 w-48
-                     origin-top-right rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="border-b-1 px-4 py-3">
-                          <p>Get in your account and use a prmotions</p>
-                        </div>
-                        <div className="flex flex-row justify-center">
-                          <button className="py-1 px-4 w-[50%] rounded-bl-lg items-center text-white bg-indigo-600 hover:bg-indigo-700">
-                            <a
-                              href="#"
-                            >
-                              Sign in
-                            </a>
-                          </button>
-                          <button className="py-1 px-4 w-[50%] rounded-br-lg text-gray-800 bg-gray-100 hover:bg-gray-200">
-                          <a
-                              href="#"
-                            >
-                              Sign up
-                            </a>
-                          </button>
+                    <Menu.Items className="absolute text-center right-0 z-10 mt-2 w-64
+                     origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <div className="px-5 pt-4 pb-3">
+                          <div className="flex flex-row justify-center">
+                            <button className="py-2 font-medium px-4 w-full items-center text-white bg-indigo-600 hover:bg-indigo-700">
+                              <a
+                                href="#"
+                              >
+                                Sign in
+                              </a>
+                            </button>
+                          </div>
+                          <div className="mt-2">
+                            <p className="text-md">Get in your account and use our prmotions.</p>
+                          </div>
+                          <a className="text-[11px] text-gray-400 hover:text-black" href="">Not a member yet? Join here for free!</a>
                         </div>
                     </Menu.Items>
                   </Transition>
