@@ -1,9 +1,42 @@
 "use client";
 
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
 export const Footer = () => {
   return (
-    <footer className="mx-auto mt-32 w-full max-w-container px-4 sm:px-6 lg:px-8 bg-gray-800">
-      <div className="border-t border-slate-900/5 py-8">
+    <footer className="mx-auto mt-32 w-full pb-8 max-w-container px-4 sm:px-6 lg:px-8 bg-gray-800">
+      <div className="grid pt-16 pb-8 ">
+        <ul className="grid grid-cols-3 text-white text-left">
+          <li className="w-40">
+            <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Shop</h3>
+            <div className="grid grid-cols-1 gap-y-3 mt-4 text-sm">
+              <a href="#">Women</a>
+              <a href="#">Men</a>
+              <a href="#">Kids</a>
+              <a href="#">Sport</a>
+              <a href="#">Accessories</a>
+            </div>
+          </li>
+          <li className="w-40">
+            <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Help</h3>
+            <div className="grid grid-cols-1 gap-y-3 mt-4 text-sm">
+              <a href="#">Contact Us</a>
+              <a href="#">Customer Service</a>
+              <a href="#">Gift Cards</a>
+              <a href="#">Leagal & Privacy</a>
+              <a href="#">Cookie Settings</a>
+            </div>
+          </li>
+          <li className="w-56">
+            <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Join us Now</h3>
+            <div className="grid grid-cols-1 gap-y-5 mt-4 text-sm">
+              <p>Becom a member today and get 10% off your first purchase</p>
+              <a className="uppercase flex decoration-solid hover:underline underline-offset-2" href="#">Read more <ArrowRightIcon className=" ml-2 h-5 w-5" aria-hidden="true" /></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div className="py-8">
         <svg
           className="mx-auto h-5 w-auto text-white"
           aria-hidden="true"
