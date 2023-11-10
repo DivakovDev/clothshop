@@ -4,10 +4,10 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export const Footer = () => {
   return (
-    <footer className="mx-auto mt-32 w-full pb-8 max-w-container px-4 sm:px-6 lg:px-32 bg-gray-800">
+    <footer className="mx-auto mt-32 w-full pb-8 max-w-container px-4 sm:px-16 lg:px-32 bg-gray-800">
       <div className="grid pt-16 pb-8 ">
-        <ul className="grid sm:grid-cols-2 text-center sm:text-left md:grid-cols-4 text-white text-left">
-          <li className="grid py-10">
+        <ul className="grid sm:grid-cols-2 sm:py-16 text-center md:text-left md:grid-cols-4 text-white">
+          <li className="grid py-10 w-52 mx-auto sm:mx-0">
             <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Shop</h3>
             <div className="grid grid-cols-1 gap-y-3 mt-4 text-sm">
               <a href="#">Women</a>
@@ -17,7 +17,7 @@ export const Footer = () => {
               <a href="#">Accessories</a>
             </div>
           </li>
-          <li className="grid py-10">
+          <li className="grid py-10 w-52 mx-auto sm:mx-0">
             <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Help</h3>
             <div className="grid grid-cols-1 gap-y-3 mt-4 text-sm">
               <a href="#">Contact Us</a>
@@ -27,7 +27,7 @@ export const Footer = () => {
               <a href="#">Cookie Settings</a>
             </div>
           </li>
-          <li className="grid py-10">
+          <li className="grid py-10 w-52 mx-auto sm:mx-0">
           <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Social Media</h3>
             <div className="grid grid-cols-1 gap-y-3 mt-4 text-sm">
               <a href="#">Facebook</a>
@@ -37,11 +37,11 @@ export const Footer = () => {
               <a href="#">Tik Tok</a>
             </div>
           </li>
-          <li className="grid py-10">
+          <li className="grid py-10 w-52 mx-auto sm:mx-0">
             <h3 className="font-medium decoration-solid underline underline-offset-2 text-lg">Join us Now</h3>
             <div className="grid grid-cols-1 gap-y-5 mt-4 text-sm">
               <p>Becom a member today and get 10% off your first purchase</p>
-              <a className="uppercase flex decoration-solid hover:underline underline-offset-2 mx-auto" href="#">Read more <ArrowRightIcon className="ml-2 h-5 w-5" aria-hidden="true" /></a>
+              <a className="uppercase flex decoration-solid hover:underline underline-offset-2 mx-auto md:mx-0" href="#">Read more <ArrowRightIcon className="ml-2 h-5 w-5" aria-hidden="true" /></a>
             </div>
           </li>
         </ul>
