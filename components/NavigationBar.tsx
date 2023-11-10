@@ -8,12 +8,16 @@ import {
   XMarkIcon,
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
+import { CustomBtn } from "./CustomBtn";
 
 const navigation = [
-  { name: "Women", href: "#", current: false },
-  { name: "Men", href: "#", current: false },
-  { name: "Company", href: "#", current: false },
-  { name: "Stores", href: "#", current: false },
+  { name: "Women", href: "#"},
+  { name: "Men", href: "#"},
+  { name: "Kids", href: "#"},
+  { name: "Sports", href: "#"},
+  { name: "Accessories", href: "#"},
+  { name: "Company", href: "#"},
+  { name: "Stores", href: "#"},
 ];
 
 function classNames(...classes: any[]) {
@@ -39,7 +43,14 @@ export const NavigationBar = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+              <div className="hidden md:relative md:inline-block">
+                <CustomBtn
+                title="Gift Cards"
+                containerStyles="text-white py-2 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-700"
+                btnType="button"
+                />
+              </div>
+              <div className="flex flex-1 items-center justify-center sm:items-stretch">
                 <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-8 w-auto"
@@ -47,32 +58,13 @@ export const NavigationBar = () => {
                     alt="Your Company"
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                          "rounded-md px-3 py-2 text-sm font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        {item.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Order dropdown */}
-                <Menu as="div" className="relative inline-block text-left">
+                <Menu as="div" className="hidden md:relative md:inline-block text-left">
                   <div>
                     <Menu.Button className="relative mx-2 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                    <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
+                      <ShoppingBagIcon className="h-6 w-6" aria-hidden="true" />
                     </Menu.Button>
                   </div>
 
@@ -124,30 +116,51 @@ export const NavigationBar = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="absolute text-center right-0 z-10 mt-2 w-64
-                     origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="px-5 pt-4 pb-3">
-                          <div className="flex flex-row justify-center">
-                            <button className="py-2 font-medium px-4 w-full items-center text-white bg-indigo-600 hover:bg-indigo-700">
-                              <a
-                                href="#"
-                              >
-                                Sign in
-                              </a>
-                            </button>
-                          </div>
-                          <div className="mt-2">
-                            <p className="text-md">Get in your account and use our prmotions.</p>
-                          </div>
-                          <a className="text-[11px] text-gray-400 hover:text-black" href="">Not a member yet? Join here for free!</a>
+                    <Menu.Items
+                      className="absolute text-center right-0 z-10 mt-2 w-64
+                     origin-top-right bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    >
+                      <div className="px-5 pt-4 pb-3">
+                        <div className="flex flex-row justify-center">
+                          <button className="py-2 font-medium px-4 w-full items-center text-white bg-indigo-600 hover:bg-indigo-700">
+                            <a href="#">Sign in</a>
+                          </button>
                         </div>
+                        <div className="mt-2">
+                          <p className="text-md">
+                            Get in your account and use our prmotions.
+                          </p>
+                        </div>
+                        <a
+                          className="text-[11px] text-gray-400 hover:text-black"
+                          href=""
+                        >
+                          Not a member yet? Join here for free!
+                        </a>
+                      </div>
                     </Menu.Items>
                   </Transition>
                 </Menu>
               </div>
             </div>
           </div>
-
+          <div className="bg-white">
+            <div className="hidden sm:ml-6 sm:block">
+              <div className="flex justify-center py-3 space-x-10">
+                {navigation.map((item) => (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    className={
+                      "text-lg font-normal text-black hover:underline underline-offset-2"
+                    }
+                  >
+                    {item.name}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
@@ -155,13 +168,9 @@ export const NavigationBar = () => {
                   key={item.name}
                   as="a"
                   href={item.href}
-                  className={classNames(
-                    item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                  className={
                     "block rounded-md px-3 py-2 text-base font-medium"
-                  )}
-                  aria-current={item.current ? "page" : undefined}
+                  }
                 >
                   {item.name}
                 </Disclosure.Button>
