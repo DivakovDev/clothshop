@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ProdHero } from './ProductsHero';
@@ -13,7 +10,6 @@ const navigation = [
 ]
 
 export const Hero = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
     <div className="bg-white">
