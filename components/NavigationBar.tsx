@@ -7,8 +7,10 @@ import {
   BellIcon,
   XMarkIcon,
   ShoppingBagIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 import { CustomBtn } from "./CustomBtn";
+import Image from "next/image";
 
 const navigation = [
   { name: "Women", href: "#"},
@@ -56,6 +58,8 @@ export const NavigationBar = () => {
                     className="h-8 w-auto"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
+                    width={30}
+                    height={30}
                   />
                 </div>
               </div>
@@ -146,7 +150,7 @@ export const NavigationBar = () => {
           </div>
           <div className="bg-white">
             <div className="hidden sm:ml-6 sm:block">
-              <div className="flex justify-center py-3 space-x-10">
+              <div className="flex justify-center py-4 space-x-10">
                 {navigation.map((item) => (
                   <a
                     key={item.name}

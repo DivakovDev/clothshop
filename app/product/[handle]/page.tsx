@@ -147,7 +147,6 @@ export default async function Product({ params }: any) {
                       <p key={index}> * </p>
                     ))}
                   </div>
-                  <p className="sr-only">{reviews.average} out of 5 stars</p>
                 </div>
                 <p className="ml-2 text-sm text-gray-500">{reviews.totalCount} reviews</p>
               </div>
@@ -159,7 +158,7 @@ export default async function Product({ params }: any) {
           </div>
 
           <div className="mt-6 flex items-center">
-            <p className="ml-2 text-sm text-gray-500">In stock and ready to ship</p>
+            <p className="ml-2 text-sm text-gray-500">{productData.product.variants[0].available ? "In stock and ready to ship" : "Out of stock"}</p>
           </div>
         </section>
       </div>
