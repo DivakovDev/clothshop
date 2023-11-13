@@ -1,4 +1,6 @@
+import VariantSelector from '@/components/VariantSelector';
 import Image from 'next/image'
+
 const product = {
   name: 'Everyday Ruck Snack',
   href: '#',
@@ -35,7 +37,7 @@ interface Product {
   variants: Variant[];
   images: Image[];
   options: Option[];
-}
+  }
 
 interface Variant {
   id: number;
@@ -94,7 +96,6 @@ interface ProductData {
 export default async function Product({ params }: any) {
   const responseData = await fetch(`https://www.tenthousand.cc/products/${params.handle}.json`)
   const productData: ProductData = await responseData.json()
-
   
   return (
     <div className="bg-white">
@@ -129,38 +130,7 @@ export default async function Product({ params }: any) {
         <div className="mt-4">
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">{productData.product.title}</h1>
         </div>
-
-        <section aria-labelledby="information-heading" className="mt-4">
-          <h2 id="information-heading" className="sr-only">
-            Product information
-          </h2>
-
-          <div className="flex items-center">
-            <p className="text-lg text-gray-900 sm:text-xl">${productData.product.variants[0].price}</p>
-
-            <div className="ml-4 pl-4 border-l border-gray-300">
-              <h2 className="sr-only">Reviews</h2>
-              <div className="flex items-center">
-                <div>
-                  <div className="flex items-center">
-                    {[0, 1, 2, 3, 4].map((rating, index) => (
-                      <p key={index}> * </p>
-                    ))}
-                  </div>
-                </div>
-                <p className="ml-2 text-sm text-gray-500">{reviews.totalCount} reviews</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-4 space-y-6">
-            <p className="text-base text-gray-500"> {productData.product.body_html.replace(/(<([^>]+)>)/gi, "")} </p>
-          </div>
-
-          <div className="mt-6 flex items-center">
-            <p className="ml-2 text-sm text-gray-500">{productData.product.variants[0].available ? "In stock and ready to ship" : "Out of stock"}</p>
-          </div>
-        </section>
+        <VariantSelector product={productData}/>
       </div>
 
       {/* Product image */}
