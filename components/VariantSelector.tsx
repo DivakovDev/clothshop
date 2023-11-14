@@ -24,16 +24,23 @@ const VariantSelector = (props: any) => {
   const uniqueSizes = Array.from(new Set(variant.map((v: any) => v.option2)));
 
   // Check if a color or size is available
-  const isColorAvailable = (color : any) => {
-    return variant.some((v : any) => v.option1 === color && v.inventory_quantity > 0);
-  };
-  
-  const isSizeAvailable = (size : any) => {
-    return variant.some((v : any) => v.option2 === size && v.inventory_quantity > 0);
+  const isColorAvailable = (color: any) => {
+    return variant.some(
+      (v: any) => v.option1 === color && v.inventory_quantity > 0
+    );
   };
 
-  const isVariantAvailable = (color : any, size : any) => {
-    return variant.some((v : any) => v.option1 === color && v.option2 === size && v.inventory_quantity > 0);
+  const isSizeAvailable = (size: any) => {
+    return variant.some(
+      (v: any) => v.option2 === size && v.inventory_quantity > 0
+    );
+  };
+
+  const isVariantAvailable = (color: any, size: any) => {
+    return variant.some(
+      (v: any) =>
+        v.option1 === color && v.option2 === size && v.inventory_quantity > 0
+    );
   };
 
   //Handle quantity change
@@ -83,45 +90,67 @@ const VariantSelector = (props: any) => {
           <>
             {/* Color Swatches */}
             <div>
-  <h3 className="mb-2 text-lg font-medium text-gray-900">Color</h3>
-  <div className="flex space-x-2">
-    {uniqueColors.map((color : any) => (
-      <button
-        key={color}
-        className={`p-2 border ${selectedColor === color ? 'border-blue-500' : 'border-gray-300'} 
-                    ${!isVariantAvailable(color, selectedSize) ? 'bg-gray-700 line-through text-red-500' : ''}`}
-        onClick={() => isVariantAvailable(color, selectedSize) && setSelectedColor(color)}
-        disabled={!isVariantAvailable(color, selectedSize)}
-      >
-        {color}
-      </button>
-    ))}
-  </div>
-</div>
+              <h3 className="mb-2 text-lg font-medium text-gray-900">Color</h3>
+              <div className="flex space-x-2">
+                {uniqueColors.map((color: any) => (
+                  <button
+                    key={color}
+                    className={`p-2 border ${
+                      selectedColor === color
+                        ? "border-blue-500"
+                        : "border-gray-300"
+                    } 
+                    ${
+                      !isVariantAvailable(color, selectedSize)
+                        ? "bg-gray-700 line-through text-red-500"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      isVariantAvailable(color, selectedSize) &&
+                      setSelectedColor(color)
+                    }
+                    disabled={!isVariantAvailable(color, selectedSize)}
+                  >
+                    {color}
+                  </button>
+                ))}
+              </div>
+            </div>
 
             {/* Size Swatches */}
             <div className="mt-4">
-  <h3 className="mb-2 text-lg font-medium text-gray-900">Size</h3>
-  <div className="flex space-x-2">
-    {uniqueSizes.map((size : any) => (
-      <button
-        key={size}
-        className={`p-2 border ${selectedSize === size ? 'border-blue-500' : 'border-gray-300'}
-                    ${!isVariantAvailable(selectedColor, size) ? 'bg-gray-700 line-through text-red-500' : ''}`}
-        onClick={() => isVariantAvailable(selectedColor, size) && setSelectedSize(size)}
-        disabled={!isVariantAvailable(selectedColor, size)}
-      >
-        {size ? size : 'Not Available'}
-      </button>
-    ))}
-  </div>
-</div>
+              <h3 className="mb-2 text-lg font-medium text-gray-900">Size</h3>
+              <div className="flex space-x-2">
+                {uniqueSizes.map((size: any) => (
+                  <button
+                    key={size}
+                    className={`p-2 border ${
+                      selectedSize === size
+                        ? "border-blue-500"
+                        : "border-gray-300"
+                    }
+                    ${
+                      !isVariantAvailable(selectedColor, size)
+                        ? "bg-gray-700 line-through text-red-500"
+                        : ""
+                    }`}
+                    onClick={() =>
+                      isVariantAvailable(selectedColor, size) &&
+                      setSelectedSize(size)
+                    }
+                    disabled={!isVariantAvailable(selectedColor, size)}
+                  >
+                    {size ? size : "Not Available"}
+                  </button>
+                ))}
+              </div>
+            </div>
           </>
         ) : (
           ""
         )}
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mt-6">
         <p className="text-lg text-gray-900 sm:text-xl">
           ${selectedVariant.price}
         </p>
@@ -151,17 +180,17 @@ const VariantSelector = (props: any) => {
       <div className="mt-6 flex items-center">
         <p className="ml-2 text-sm text-gray-500">{stockMessage}</p>
       </div>
-      <div className="mt-4 flex items-center">
+      <div className="mt-4 flex flex-col items-center justify-center">
         <label
           htmlFor="quantity"
-          className="block text-sm font-medium text-gray-700"
+          className="block text-lg text-center mb-4 font-medium text-gray-700"
         >
           Quantity
         </label>
-        <div className="flex items-center ml-2">
+        <div className="flex flex-row w-full items-center justify-center">
           <button
             onClick={decreaseQuantity}
-            className="p-1 border border-gray-300 rounded-l-md bg-white text-gray-500 hover:bg-gray-100"
+            className="p-1 my-auto h-16 w-16 font-extrabold text-lg border border-gray-300 rounded-l-md bg-white text-gray-500 hover:bg-gray-100"
           >
             -
           </button>
@@ -172,20 +201,28 @@ const VariantSelector = (props: any) => {
             max={selectedVariant.inventory_quantity}
             value={selectedQuantity}
             onChange={handleQuantityChange}
-            className="w-12 text-center border-t border-b border-gray-300"
+            className="w-full h-16 text-center border-t border-b border-gray-300"
           />
           <button
             onClick={increaseQuantity}
-            className="p-1 border border-gray-300 rounded-r-md bg-white text-gray-500 hover:bg-gray-100"
+            className="p-1 my-auto h-16 w-16 font-extrabold text-lg border border-gray-300 rounded-r-md bg-white text-gray-500 hover:bg-gray-100"
           >
             +
           </button>
         </div>
+        <div className="mt-4">
+          <a
+            href="#"
+            className="group text-left inline-flex text-sm text-gray-500 hover:text-gray-700"
+          >
+            <span>What size should I buy?</span>
+          </a>
+        </div>
         <button
           onClick={addToCart}
-          className="mt-6 w-full bg-blue-600 border border-transparent rounded-md py-2 px-4 flex items-center justify-center text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="flex mt-6 w-full h-16 bg-blue-600 border border-transparent rounded-md py-2 px-4 items-center justify-center text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          Add to Cart
+          Add to Bag
         </button>
       </div>
     </section>
