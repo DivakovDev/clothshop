@@ -99,17 +99,8 @@ const VariantSelector = (props: any) => {
                       selectedColor === color
                         ? "border-blue-500"
                         : "border-gray-300"
-                    } 
-                    ${
-                      !isVariantAvailable(color, selectedSize)
-                        ? "bg-gray-700 line-through text-red-500"
-                        : ""
                     }`}
-                    onClick={() =>
-                      isVariantAvailable(color, selectedSize) &&
-                      setSelectedColor(color)
-                    }
-                    disabled={!isVariantAvailable(color, selectedSize)}
+                    onClick={() => setSelectedColor(color)}
                   >
                     {color}
                   </button>
