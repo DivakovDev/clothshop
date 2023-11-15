@@ -14,7 +14,7 @@ type MenuSection = {
 
 export const navigationLinks = [
   { name: "SHORTS", href: "#", dropdownId: "ShortsMegamenu" },
-  { name: "SHIRTS", href: "#", dropdownId: "Shirtsmegamenu" },
+  { name: "SHIRTS", href: "#", dropdownId: "megamenu" },
   { name: "BEST SELLERS", href: "#", dropdownId: "megamenu" },
   { name: "KITS + PACKS", href: "#", dropdownId: "megamenu" },
   { name: "TACTICAL", href: "#", dropdownId: "megamenu" },
@@ -82,7 +82,7 @@ export const NavigationBar = () => {
   return (
     <header className="shadow-md relative">
       <nav className="bg-white border-gray-200  ">
-        <div className="flex flex-wrap justify-between items-center mx-auto w-screen px-4 md:px-6 py-2.5 relative">
+        <div className="flex flex-wrap justify-between items-center mx-0 w-screen px-4 md:px-6 py-2.5 relative">
           <a href="https://flowbite.com" className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
@@ -101,11 +101,11 @@ export const NavigationBar = () => {
             >
               Login
             </a>
-            <span className="mr-0 ml-2 w-px h-5 bg-gray-200  lg:inline lg:mr-3 lg:ml-5" />
+            <span className="w-px h-5 bg-gray-200 lg:inline mr-2 ml-2 sm:mr-5 sm:ml-5" />
             {/* Signup button */}
             <a
               href="#"
-              className="text-sm mr-6 font-medium text-primary-600  hover:underline"
+              className="text-sm sm:mr-6 font-medium text-primary-600  hover:underline"
             >
               SignUp
             </a>
@@ -115,57 +115,6 @@ export const NavigationBar = () => {
       <nav className="bg-white border-gray-200 border-y">
         <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
           <form className="flex mb-4 lg:order-2 lg:mb-0">
-            <div
-              id="dropdown"
-              className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow "
-              data-popper-reference-hidden=""
-              data-popper-escaped=""
-              data-popper-placement="top"
-              style={{
-                position: "absolute",
-                inset: "auto auto 0px 0px",
-                margin: 0,
-                transform: "translate3d(897px, 5637px, 0px)",
-              }}
-            >
-              <ul
-                className="py-1 text-sm text-gray-700 "
-                aria-labelledby="dropdown-button"
-              >
-                <li>
-                  <button
-                    type="button"
-                    className="inline-flex py-2 px-4 w-full hover:bg-gray-100  "
-                  >
-                    Mockups
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="inline-flex py-2 px-4 w-full hover:bg-gray-100  "
-                  >
-                    Templates
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="inline-flex py-2 px-4 w-full hover:bg-gray-100  "
-                  >
-                    Design
-                  </button>
-                </li>
-                <li>
-                  <button
-                    type="button"
-                    className="inline-flex py-2 px-4 w-full hover:bg-gray-100  "
-                  >
-                    Logos
-                  </button>
-                </li>
-              </ul>
-            </div>
             <div className="relative w-full">
               <input
                 type="search"

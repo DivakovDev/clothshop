@@ -17,7 +17,8 @@ const VariantSelector = (props: any) => {
         ? "Low in stock"
         : "In stock"
       : "Out of stock";
-  console.log(product.variants);
+
+  console.log(product.variants.breadcrumbs)
 
   // Extract unique colors and sizes
   const uniqueColors = Array.from(new Set(variant.map((v: any) => v.option1)));
