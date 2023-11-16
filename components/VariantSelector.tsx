@@ -11,14 +11,13 @@ const VariantSelector = (props: any) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const variant = product.variants;
+
   const stockMessage =
     selectedVariant.inventory_quantity > 0
       ? selectedVariant.inventory_quantity < 5
         ? "Low in stock"
         : "In stock"
       : "Out of stock";
-
-  console.log(product.variants.breadcrumbs)
 
   // Extract unique colors and sizes
   const uniqueColors = Array.from(new Set(variant.map((v: any) => v.option1)));

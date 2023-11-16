@@ -1,7 +1,7 @@
 import VariantSelector from "@/components/VariantSelector";
 import Image from "next/image";
 
-import ProductData from "@/types/index";
+import ProductsData from "@/types/index";
 
 const product = {
   name: "Everyday Ruck Snack",
@@ -31,7 +31,7 @@ export default async function Product({ params }: any) {
   const responseData = await fetch(
     `https://www.tenthousand.cc/products/${params.handle}.json`
   );
-  const productData: ProductData = await responseData.json();
+  const productData: ProductsData = await responseData.json();
 
   return (
     <div className="bg-white">
@@ -68,7 +68,7 @@ export default async function Product({ params }: any) {
 
           <div className="mt-4">
             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {productData.product.title}
+              {productData.title}
             </h1>
           </div>
           <VariantSelector product={productData} />
@@ -78,8 +78,8 @@ export default async function Product({ params }: any) {
         <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
           <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
             <Image
-              src={productData.product.images[0].src}
-              alt={productData.product.title}
+              src={productData.images[0].src}
+              alt={productData.title}
               className="w-full h-full object-center object-cover"
               width={400}
               height={400}

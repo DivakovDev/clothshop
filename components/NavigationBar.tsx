@@ -1,14 +1,13 @@
-import { title } from "process";
+import Image from "next/image";
 
 type MenuItem = {
   name: string;
   href: string;
-  description?: string; // make the description optional
+  description?: string;
 };
 
 type MenuSection = {
   title: string;
-  description?: string; // this is also optional if some sections don't have a description
   items: MenuItem[];
 };
 
@@ -79,16 +78,17 @@ export const ShortsMegamenuSections: MenuSection[] = [
 ];
 
 export const NavigationBar = () => {
-  
   return (
     <header className="shadow-md relative">
       <nav className="bg-white border-gray-200  ">
         <div className="flex flex-wrap justify-between items-center mx-0 w-screen px-4 md:px-6 py-2.5 relative">
           <a href="https://flowbite.com" className="flex items-center">
-            <img
+            <Image
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
               alt="Flowbite Logo"
+              width={36}
+              height={36}
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap ">
               Flowbite
@@ -152,7 +152,7 @@ export const NavigationBar = () => {
                 <li key={index} className={`group relative`}>
                   <a
                     href={link.href}
-                    className="text-gray-900 hover:text-primary-600 py-6 px-4"
+                    className="text-gray-900 hover:underline py-6 px-4"
                   >
                     {link.name}
                   </a>
@@ -167,18 +167,13 @@ export const NavigationBar = () => {
                             <h3 className="text-lg font-bold">
                               {section.title}
                             </h3>
-                            {section.description && (
-                              <p className="text-sm text-gray-500">
-                                {section.description}
-                              </p>
-                            )}
                             <ul>
                               {section.items.map(
                                 (item: any, itemIndex: any) => (
                                   <li key={itemIndex} className="py-1">
                                     <a
                                       href={item.href}
-                                      className="text-base text-gray-700 hover:text-gray-900"
+                                      className="text-base text-gray-900  hover:text-indigo-600"
                                     >
                                       {item.name}
                                       {item.description && (
