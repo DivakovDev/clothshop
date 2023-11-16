@@ -182,7 +182,7 @@ export const NavigationBar = () => {
                       <div className="grid py-4 px-4 mx-auto text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6 ">
                         {ShortsMegamenuSections.map((section, sectionIndex) => (
                           <div key={sectionIndex} className="mb-4">
-                            <h3 className="text-lg font-bold">
+                            <h3 className="text-lg font-bold mb-2">
                               {section.title}
                             </h3>
                             <ul>
@@ -191,11 +191,11 @@ export const NavigationBar = () => {
                                   <li key={itemIndex} className="py-1">
                                     <a
                                       href={item.href}
-                                      className="text-base text-gray-900  hover:text-indigo-600"
+                                      className="text-sm text-gray-900  hover:text-indigo-600"
                                     >
                                       {item.name}
                                       {item.description && (
-                                        <p className="text-sm text-gray-500">
+                                        <p className="text-xs text-gray-500">
                                           {item.description}
                                         </p>
                                       )}
