@@ -1,3 +1,7 @@
+'use client'
+
+import React, { useState } from "react";
+
 import Image from "next/image";
 
 type MenuItem = {
@@ -13,15 +17,15 @@ type MenuSection = {
 
 export const navigationLinks = [
   { name: "SHORTS", href: "#", dropdownId: "ShortsMegamenu" },
-  { name: "SHIRTS", href: "#", dropdownId: "megamenu" },
-  { name: "BEST SELLERS", href: "#", dropdownId: "megamenu" },
-  { name: "KITS + PACKS", href: "#", dropdownId: "megamenu" },
-  { name: "TACTICAL", href: "#", dropdownId: "megamenu" },
+  { name: "SHIRTS", href: "#", dropdownId: "ShirtsMegamenu" },
+  { name: "BEST SELLERS", href: "#", dropdownId: "BestSellerMegamenu" },
+  { name: "KITS + PACKS", href: "#", dropdownId: "Kits&PantsMegamenu" },
+  { name: "TACTICAL", href: "#", dropdownId: "TacticalMegamenu" },
 ];
 
 export const ShortsMegamenuSections: MenuSection[] = [
   {
-    title: "Our Products",
+    title: "SHORTS",
     items: [
       {
         name: "Interval Short",
@@ -78,6 +82,8 @@ export const ShortsMegamenuSections: MenuSection[] = [
 ];
 
 export const NavigationBar = () => {
+  const [activeItem, setActiveItem] = useState<string | null>(null);
+
   return (
     <header className="shadow-md relative">
       <nav className="bg-white border-gray-200  ">
@@ -149,16 +155,28 @@ export const NavigationBar = () => {
           <div className="flex items-center relative">
             <ul className="flex flex-row mt-0 space-x-2 text-sm font-medium">
               {navigationLinks.map((link, index) => (
-                <li key={index} className={`group relative`}>
+                <li
+                  key={index}
+                  className={`group relative`}
+                  onMouseEnter={() => setActiveItem(link.dropdownId)}
+                  onMouseLeave={() => setActiveItem(null)}
+                >
                   <a
                     href={link.href}
-                    className="text-gray-900 hover:underline py-6 px-4"
+                    className={`text-gray-900 py-6 px-4 ${
+                      activeItem === link.dropdownId
+                        ? "underline underline-offset-8"
+                        : ""
+                    }`}
                   >
                     {link.name}
                   </a>
                   {/* Conditional rendering for the mega menu */}
                   {link.dropdownId === "ShortsMegamenu" && (
-                    <div className="hidden group-hover:block absolute top-full h-max w-max mt-4 bg-white shadow-md border border-gray-200 z-50">
+                    <div
+                      className="hidden group-hover:block absolute top-full h-max w-max mt-4 bg-white shadow-md border border-gray-200 z-50"
+                      onMouseEnter={() => setActiveItem(link.dropdownId)}
+                    >
                       {" "}
                       {/* Mega Menu */}
                       <div className="grid py-4 px-4 mx-auto text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6 ">
