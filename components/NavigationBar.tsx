@@ -114,8 +114,8 @@ export const NavigationBar = () => {
         </div>
       </nav>
       <nav className="bg-white border-gray-200 border-y">
-        <div className="grid py-4 px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
-          <form className="flex mb-4 lg:order-2 lg:mb-0">
+        <div className="grid px-4 mx-auto max-w-screen-xl lg:grid-cols-2 md:px-6">
+          <form className="flex mb-4 lg:order-2 py-4 lg:mb-0">
             <div className="relative w-full">
               <input
                 type="search"
@@ -147,22 +147,21 @@ export const NavigationBar = () => {
             </div>
           </form>
           <div className="flex items-center relative">
-            <ul className="flex flex-row mt-0 space-x-8 text-sm font-medium">
+            <ul className="flex flex-row mt-0 space-x-2 text-sm font-medium">
               {navigationLinks.map((link, index) => (
                 <li key={index} className={`group relative`}>
                   <a
                     href={link.href}
-                    className="text-gray-900 hover:text-primary-600"
+                    className="text-gray-900 hover:text-primary-600 py-6 px-4"
                   >
                     {link.name}
                   </a>
                   {/* Conditional rendering for the mega menu */}
-                  {link.dropdownId === "megamenu" && (
-                    <div className="hidden group-hover:block absolute left-0 right-0 top-full bg-white shadow-md border border-gray-200 z-50 w-screen">
+                  {link.dropdownId === "ShortsMegamenu" && (
+                    <div className="hidden group-hover:block absolute top-full h-max w-max mt-4 bg-white shadow-md border border-gray-200 z-50">
                       {" "}
-                      {/* This ensures the mega menu spans full width */}
                       {/* Mega Menu */}
-                      <div className="grid py-4 px-4 mx-auto text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6">
+                      <div className="grid py-4 px-4 mx-auto text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6 ">
                         {ShortsMegamenuSections.map((section, sectionIndex) => (
                           <div key={sectionIndex} className="mb-4">
                             <h3 className="text-lg font-bold">
