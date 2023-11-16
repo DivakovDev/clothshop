@@ -74,6 +74,6 @@ interface Option {
   values: string[];
 }
 
-export default interface ProductsData {
-  products: Product[];
+export default interface ProductData {
+  product: Product;
 }

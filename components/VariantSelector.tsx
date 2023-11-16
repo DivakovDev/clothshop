@@ -11,8 +11,7 @@ const VariantSelector = (props: any) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const variant = product.variants;
-  console.log();
-
+  
   const stockMessage =
     selectedVariant.inventory_quantity > 0
       ? selectedVariant.inventory_quantity < 5
