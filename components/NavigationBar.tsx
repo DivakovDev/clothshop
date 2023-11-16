@@ -82,6 +82,7 @@ export const ShortsMegamenuSections: MenuSection[] = [
 ];
 
 export const NavigationBar = () => {
+
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   return (

@@ -11,6 +11,7 @@ const VariantSelector = (props: any) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const variant = product.variants;
+  console.log();
 
   const stockMessage =
     selectedVariant.inventory_quantity > 0
@@ -22,19 +23,6 @@ const VariantSelector = (props: any) => {
   // Extract unique colors and sizes
   const uniqueColors = Array.from(new Set(variant.map((v: any) => v.option1)));
   const uniqueSizes = Array.from(new Set(variant.map((v: any) => v.option2)));
-
-  // Check if a color or size is available
-  const isColorAvailable = (color: any) => {
-    return variant.some(
-      (v: any) => v.option1 === color && v.inventory_quantity > 0
-    );
-  };
-
-  const isSizeAvailable = (size: any) => {
-    return variant.some(
-      (v: any) => v.option2 === size && v.inventory_quantity > 0
-    );
-  };
 
   const isVariantAvailable = (color: any, size: any) => {
     return variant.some(
