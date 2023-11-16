@@ -79,6 +79,7 @@ export const ShortsMegamenuSections: MenuSection[] = [
 ];
 
 export const NavigationBar = () => {
+  
   return (
     <header className="shadow-md relative">
       <nav className="bg-white border-gray-200  ">
@@ -148,7 +149,7 @@ export const NavigationBar = () => {
           <div className="flex items-center relative">
             <ul className="flex flex-row mt-0 space-x-8 text-sm font-medium">
               {navigationLinks.map((link, index) => (
-                <li key={index} className={`group`}>
+                <li key={index} className={`group relative`}>
                   <a
                     href={link.href}
                     className="text-gray-900 hover:text-primary-600"
@@ -156,14 +157,14 @@ export const NavigationBar = () => {
                     {link.name}
                   </a>
                   {/* Conditional rendering for the mega menu */}
-                  {link.dropdownId === "ShortsMegamenu" && (
-                    <div className="hidden group-hover:block absolute left-0 right-0 top-full bg-white shadow-md border border-gray-200 z-50 w-[96%] md:w-[80%]  lg:w-[150%] ">
+                  {link.dropdownId === "megamenu" && (
+                    <div className="hidden group-hover:block absolute left-0 right-0 top-full bg-white shadow-md border border-gray-200 z-50 w-screen">
                       {" "}
                       {/* This ensures the mega menu spans full width */}
                       {/* Mega Menu */}
-                      <div className="grid py-4 px-4 max-w-screen-lg text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6">
+                      <div className="grid py-4 px-4 mx-auto text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6">
                         {ShortsMegamenuSections.map((section, sectionIndex) => (
-                          <div key={sectionIndex} className="mb-4 mx-2">
+                          <div key={sectionIndex} className="mb-4">
                             <h3 className="text-lg font-bold">
                               {section.title}
                             </h3>
@@ -173,21 +174,23 @@ export const NavigationBar = () => {
                               </p>
                             )}
                             <ul>
-                              {section.items.map((item, itemIndex) => (
-                                <li key={itemIndex} className="py-1">
-                                  <a
-                                    href={item.href}
-                                    className="text-base text-gray-700 hover:text-gray-900"
-                                  >
-                                    {item.name}
-                                    {item.description && (
-                                      <p className="text-sm text-gray-500">
-                                        {item.description}
-                                      </p>
-                                    )}
-                                  </a>
-                                </li>
-                              ))}
+                              {section.items.map(
+                                (item: any, itemIndex: any) => (
+                                  <li key={itemIndex} className="py-1">
+                                    <a
+                                      href={item.href}
+                                      className="text-base text-gray-700 hover:text-gray-900"
+                                    >
+                                      {item.name}
+                                      {item.description && (
+                                        <p className="text-sm text-gray-500">
+                                          {item.description}
+                                        </p>
+                                      )}
+                                    </a>
+                                  </li>
+                                )
+                              )}
                             </ul>
                           </div>
                         ))}
