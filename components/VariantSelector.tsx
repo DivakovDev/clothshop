@@ -11,6 +11,7 @@ const VariantSelector = (props: any) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const variant = product.variants;
+  console.log(product.variants);
   
   const stockMessage =
     selectedVariant.inventory_quantity > 0
@@ -23,6 +24,7 @@ const VariantSelector = (props: any) => {
   const uniqueColors = Array.from(new Set(variant.map((v: any) => v.option1)));
   const uniqueSizes = Array.from(new Set(variant.map((v: any) => v.option2)));
 
+  // Check if a variant is available based on color and size
   const isVariantAvailable = (color: any, size: any) => {
     return variant.some(
       (v: any) =>
@@ -38,7 +40,7 @@ const VariantSelector = (props: any) => {
     }
   };
 
-  // Increase and decrease quantity
+  // Increase quantity
   const increaseQuantity = () => {
     setSelectedQuantity((prevQuantity) => {
       return prevQuantity < selectedVariant.inventory_quantity
@@ -46,13 +48,14 @@ const VariantSelector = (props: any) => {
         : prevQuantity;
     });
   };
+  // Decrease quantity
   const decreaseQuantity = () => {
     setSelectedQuantity((prevQuantity) => {
       return prevQuantity > 1 ? prevQuantity - 1 : prevQuantity;
     });
   };
 
-  // Add to cart
+  // Add to cart function
   const addToCart = () => {
     // Logic to add selectedVariant and selectedQuantity to the cart
     // This might involve updating a global state, calling an API, etc.
