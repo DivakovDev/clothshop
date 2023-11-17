@@ -33,7 +33,7 @@ export default function Login() {
             required
           />
         </div>
-        <p className="text-xs mb-6 ">Already don&apos;t have an account? <span> <a className="underline hover:text-indigo-600 font-semibold" href="">Sign Up</a></span></p>
+        <p className="text-xs mb-6 ">Don&apos;t have an account? <span> <a className="underline hover:text-indigo-600 font-semibold" href="/register">Sign Up</a></span></p>
         <div className="flex items-start mb-6">
           <div className="flex items-center h-5">
             <input

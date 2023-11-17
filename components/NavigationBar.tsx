@@ -121,7 +121,7 @@ fetchProductData();
           <div className="flex items-center">
             {/* Login button */}
             <a
-              href="#"
+              href="/login"
               className="text-sm font-medium text-primary-600  hover:underline"
             >
               Login
@@ -129,7 +129,7 @@ fetchProductData();
             <span className="w-px h-5 bg-gray-200 lg:inline mr-2 ml-2 sm:mr-5 sm:ml-5" />
             {/* Signup button */}
             <a
-              href="#"
+              href="/register"
               className="text-sm sm:mr-6 font-medium text-primary-600  hover:underline"
             >
               SignUp
