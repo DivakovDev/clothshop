@@ -7,7 +7,7 @@ export interface CustomButtonProps {
   handleClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export default interface Product {
+export interface Product {
   id: number;
   title: string;
   handle: string;
@@ -23,7 +23,7 @@ export default interface Product {
   options: Option[];
 }
 
-interface Variant {
+export interface Variant {
   id: number;
   title: string;
   option1: string;
@@ -43,7 +43,7 @@ interface Variant {
   updated_at: string;
 }
 
-interface FeaturedImage {
+export interface FeaturedImage {
   id: number;
   product_id: number;
   position: number;
@@ -56,7 +56,7 @@ interface FeaturedImage {
   variant_ids: number[];
 }
 
-interface Image {
+export interface Image {
   id: number;
   created_at: string;
   position: number;
@@ -68,12 +68,16 @@ interface Image {
   height: number;
 }
 
-interface Option {
+export interface Option {
   name: string;
   position: number;
   values: string[];
 }
 
-export default interface ProductData {
+export interface ProductData {
   product: Product;
+}
+
+export interface ProductListData {
+  products: Product[];
 }

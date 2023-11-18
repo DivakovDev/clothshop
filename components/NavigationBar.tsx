@@ -82,24 +82,6 @@ export const ShortsMegamenuSections: MenuSection[] = [
 
 export const NavigationBar = () => {
 
-  async function fetchProductData() {
-    try {
-      const responseData = await fetch("https://www.tenthousand.cc/products.json?limit=20");
-      const productData = await responseData.json();
-      const listOfProds = productData.products;
-      
-      // Filter products with titles containing "Shorts"
-      const shorts = listOfProds.some((prod : any) => prod.title.includes("Short"));
-      
-      
-      console.log(shorts);
-    } catch (error) {
-      console.error("Error fetching product data:", error);
-    }
-}
-
-fetchProductData();
-
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   return (

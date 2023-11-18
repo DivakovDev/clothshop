@@ -1,7 +1,7 @@
 import VariantSelector from "@/components/VariantSelector";
 import Image from "next/image";
 
-import ProductData from "@/types/index";
+import { ProductData } from "@/types/index";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
