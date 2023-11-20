@@ -83,7 +83,7 @@ export interface ProductListData {
 }
 
 export interface PagesData{
-  collections: Collections;
+  collections: Collections[];
 }
 
 export interface Collections {
