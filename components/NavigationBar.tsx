@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 type MenuItem = {
   name: string;
@@ -15,9 +16,9 @@ type MenuSection = {
 };
 
 export const navigationLinks = [
-  { name: "SHORTS", href: "#", dropdownId: "ShortsMegamenu" },
-  { name: "SHIRTS", href: "#", dropdownId: "ShirtsMegamenu" },
-  { name: "BEST SELLERS", href: "#", dropdownId: "BestSellerMegamenu" },
+  { name: "SHORTS", href: "shorts", dropdownId: "ShortsMegamenu" },
+  { name: "SHIRTS", href: "shirts", dropdownId: "ShirtsMegamenu" },
+  { name: "BEST SELLERS", href: "best", dropdownId: "BestSellerMegamenu" },
   { name: "KITS + PACKS", href: "#", dropdownId: "Kits&PantsMegamenu" },
   { name: "TACTICAL", href: "#", dropdownId: "TacticalMegamenu" },
 ];
@@ -80,7 +81,7 @@ export const ShortsMegamenuSections: MenuSection[] = [
   },
 ];
 
-export const NavigationBar = () => {
+export const NavigationBar = ()  => {
 
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
@@ -161,8 +162,8 @@ export const NavigationBar = () => {
                   onMouseEnter={() => setActiveItem(link.dropdownId)}
                   onMouseLeave={() => setActiveItem(null)}
                 >
-                  <a
-                    href={link.href}
+                  <Link
+                    href={`/collections/${link.href}`}
                     className={`text-gray-900 py-6 px-4 ${
                       activeItem === link.dropdownId
                         ? "underline underline-offset-8"
@@ -170,7 +171,7 @@ export const NavigationBar = () => {
                     }`}
                   >
                     {link.name}
-                  </a>
+                  </Link>
                   {/* Conditional rendering for the mega menu */}
                   {link.dropdownId === "ShortsMegamenu" && (
                     <div
