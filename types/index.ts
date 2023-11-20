@@ -82,17 +82,16 @@ export interface ProductListData {
   products: Product[];
 }
 
-export interface PagesData{
-  collections: Collections[];
-}
-
-export interface Collections {
-  id: number;
-  title: string;
-  handle: string;
-  description: string;
-  published_at: string;
-  updated_at: string;
-  image: boolean;
-  products_count: number[];
+export interface PagesData {
+  collection:{
+    id: number;
+    title: string;
+    handle: string;
+    description: string;
+    published_at: string;
+    updated_at: string;
+    image: boolean;
+    products_count: number;
+    products: Product[];
+  }
 }

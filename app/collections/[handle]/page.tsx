@@ -1,39 +1,63 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { ProdHero } from "@/components";
-import VariantSelector from "@/components/VariantSelector";
-import { Collections, PagesData, ProductListData } from "@/types";
+import { PagesData, Product } from "@/types";
 import Image from "next/image";
 
-function classNames(...classes: any[]) {
-    return classes.filter(Boolean).join(" ");
+export default function Collection({ params } : any) {
+  const [collectionData, setCollectionData] = useState<PagesData | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCollectionData = async () => {
+      try {
+        const response = await fetch(
+          `https://www.tenthousand.cc/collections/${params.handle}.json`
+        );
+        if (!response.ok) {
+          throw new Error(`Error fetching collection data: ${response.statusText}`);
+        }
+        const rawData: PagesData = await response.json();
+        setCollectionData(rawData);
+      } catch (error) {
+        console.error("Fetching collection error:", error);
+        setError(error);
+      }
+    };
+
+    const fetchProductsData = async () => {
+      try {
+        const response = await fetch(`https://www.tenthousand.cc/collections/${params.handle}/products.json`);
+        if (!response.ok) {
+          throw new Error(`Error fetching products data: ${response.statusText}`);
+        }
+        const productsData = await response.json();
+        console.log(productsData.products);
+        setProducts(productsData.products); // Adjust according to the actual structure of your response
+      } catch (error) {
+        console.error("Fetching products error:", error);
+        // Handle error or set error state
+      }
+    };
+
+    fetchCollectionData();
+    fetchProductsData(); // Call this if it's a separate endpoint
+  }, [params.handle]);
+
+  if (error) {
+    return <div>Error loading data</div>;
   }
 
-export default async function Collection ({ params }: { params: { handle: string } }){
-  const responseData = await fetch(
-    `https://www.tenthousand.cc/collections/${params.handle}.json`
-  );
-  const productData: PagesData = await responseData.json();
+  if (!collectionData) {
+    return <div>Loading...</div>;
+  }
 
-  console.log(productData.collections);
 
   return (
-    <div className="bg-white">
-      <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
-        {/* Product details */}
-        <div className="lg:max-w-lg lg:self-end">
-          <div className="mt-4">
-            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-              {params.handle}
-            </h1>
-          </div>
-        </div>
-      </div>
-      <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-          Customers also purchased
-        </h2>
-      </div>
-    </div>
+    <div>
+      <ProdHero products={products} collectionTitle={collectionData.collection.title} />
     </div>
   );
 }

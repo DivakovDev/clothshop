@@ -1,13 +1,32 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { ProdHero } from "./ProductsHero";
 import Image from "next/image";
-const navigation = [
-  { name: "Product", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
-];
+import { ProductListData } from "@/types/index"; // Make sure to import your types
 
 export const Hero = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://www.tenthousand.cc/products.json?limit=8`
+        );
+        if (!response.ok) {
+          throw new Error(`Error fetching data: ${response.statusText}`);
+        }
+        const rawData: ProductListData = await response.json();
+        setProducts(rawData.products); // Assuming your response has a 'products' field
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="bg-white">
       <div className="relative overflow-hidden bg-white">
@@ -122,7 +141,12 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-      <ProdHero />
+      <div className="mt-20">
+      <h2 className=" ml-40 text-2xl font-bold tracking-tight text-gray-900">
+        Customers also purchased
+      </h2>
+      <ProdHero products={products} />
+      </div>
     </div>
   );
 };

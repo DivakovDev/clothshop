@@ -16,11 +16,11 @@ type MenuSection = {
 };
 
 export const navigationLinks = [
+  { name: "Shop All", href: "/", dropdownId: "ShopAllMegamenu" },
   { name: "SHORTS", href: "shorts", dropdownId: "ShortsMegamenu" },
   { name: "SHIRTS", href: "shirts", dropdownId: "ShirtsMegamenu" },
-  { name: "BEST SELLERS", href: "best", dropdownId: "BestSellerMegamenu" },
-  { name: "KITS + PACKS", href: "#", dropdownId: "Kits&PantsMegamenu" },
-  { name: "TACTICAL", href: "#", dropdownId: "TacticalMegamenu" },
+  { name: "KITS + PACKS", href: "kits", dropdownId: "Kits&PantsMegamenu" },
+  { name: "TACTICAL", href: "tactical-collection", dropdownId: "TacticalMegamenu" },
 ];
 
 export const ShortsMegamenuSections: MenuSection[] = [
@@ -163,7 +163,7 @@ export const NavigationBar = ()  => {
                   onMouseLeave={() => setActiveItem(null)}
                 >
                   <Link
-                    href={`/collections/${link.href}`}
+                    href={`/collections/${link.href ? link.href : ""}`}
                     className={`text-gray-900 py-6 px-4 ${
                       activeItem === link.dropdownId
                         ? "underline underline-offset-8"
