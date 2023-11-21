@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 import { ProdHero } from "./ProductsHero";
 import Image from "next/image";
-import { ProductListData } from "@/types/index"; // Make sure to import your types
+import { ProductListData, Product } from "@/types/index"; // Make sure to import your types
 
 export const Hero = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -142,10 +142,10 @@ export const Hero = () => {
         </div>
       </div>
       <div className="mt-20">
-      <h2 className=" ml-40 text-2xl font-bold tracking-tight text-gray-900">
-        Customers also purchased
-      </h2>
-      <ProdHero products={products} />
+        <h2 className=" ml-40 text-2xl font-bold tracking-tight text-gray-900">
+          Customers also purchased
+        </h2>
+        <ProdHero products={products} />
       </div>
     </div>
   );

@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export const ProdHero = ({ products, collectionTitle }: { products: any; collectionTitle?: string }) => {
+export const ProdHero = ({
+  products,
+  collectionTitle,
+}: {
+  products: any;
+  collectionTitle?: string;
+}) => {
   // Check if products data is available
   if (!products || products.length === 0) {
     return <div>No products found</div>;
@@ -10,16 +16,18 @@ export const ProdHero = ({ products, collectionTitle }: { products: any; collect
     <div className="mx-auto max-w-2xl px-4 py-6 sm:max-w-xl sm:px-6 lg:max-w-7xl lg:px-8">
       {collectionTitle && (
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">Believe</h2>
-          <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-          {collectionTitle}
-          </p>
-          <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
-          Unveil the Exceptional - Where Style Meets Substance.
-          </p>
+          <div className="text-center">
+            <h2 className="text-base font-semibold text-indigo-600 tracking-wide uppercase">
+              Believe
+            </h2>
+            <p className="mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+              {collectionTitle}
+            </p>
+            <p className="max-w-xl mt-5 mx-auto text-xl text-gray-500">
+              Unveil the Exceptional - Where Style Meets Substance.
+            </p>
+          </div>
         </div>
-      </div>
       )}
       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {products.map((product: any) => (
@@ -52,4 +60,3 @@ export const ProdHero = ({ products, collectionTitle }: { products: any; collect
     </div>
   );
 };
-
