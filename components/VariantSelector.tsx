@@ -12,7 +12,7 @@ const VariantSelector = (props: any) => {
 
   const variant = product.variants;
   console.log(product.variants);
-  
+
   const stockMessage =
     selectedVariant.inventory_quantity > 0
       ? selectedVariant.inventory_quantity < 5
@@ -21,8 +21,11 @@ const VariantSelector = (props: any) => {
       : "Out of stock";
 
   // Extract unique colors and sizes
-  const uniqueColors = Array.from(new Set(variant.map((v: any) => v.option1)));
   const uniqueSizes = Array.from(new Set(variant.map((v: any) => v.option2)));
+  const availableVariants = variant.filter(
+    (v: any) => v.inventory_quantity > 0
+  );
+  const uniqueColors = Array.from(new Set(availableVariants.map((v: any) => v.option1)));
 
   // Check if a variant is available based on color and size
   const isVariantAvailable = (color: any, size: any) => {
@@ -82,7 +85,7 @@ const VariantSelector = (props: any) => {
             <div>
               <h3 className="mb-2 text-lg font-medium text-gray-900">Color</h3>
               <div className="flex space-x-2">
-                {uniqueColors.map((color: any) => (
+                {uniqueColors.slice(0, 6).map((color: any) => (
                   <button
                     key={color}
                     className={`p-2 border ${
@@ -146,7 +149,6 @@ const VariantSelector = (props: any) => {
                 ))}
               </div>
             </div>
-            {/* <p className="ml-2 text-sm text-gray-500">{reviews.totalCount} reviews</p> */}
           </div>
         </div>
       </div>

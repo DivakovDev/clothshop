@@ -94,7 +94,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export const Footer = () => {
   return (
-    <footer className="mx-auto mt-32 w-full pb-8 max-w-container px-4 sm:px-16 lg:px-32 bg-gray-800">
+    <footer className="mx-auto w-full pb-8 max-w-container px-4 sm:px-16 lg:px-32 bg-gray-800">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">

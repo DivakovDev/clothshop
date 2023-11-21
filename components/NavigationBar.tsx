@@ -16,7 +16,6 @@ type MenuSection = {
 };
 
 export const navigationLinks = [
-  { name: "Shop All", href: "/", dropdownId: "ShopAllMegamenu" },
   { name: "SHORTS", href: "shorts", dropdownId: "ShortsMegamenu" },
   { name: "SHIRTS", href: "shirts", dropdownId: "ShirtsMegamenu" },
   { name: "KITS + PACKS", href: "kits", dropdownId: "Kits&PantsMegamenu" },

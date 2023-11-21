@@ -1,7 +1,7 @@
 export default function Register() {
   return (
-    <div>
-      <form className="gird sm:w-1/2 lg:w-2/6 mx-auto py-10 px-10 border-2 border-indigo-600 shadow-lg rounded-lg mt-2 sm:mt-4 md:mt-6 lg:mt-10">
+    <div className="py-24">
+      <form className="gird sm:w-1/2 lg:w-2/6 mx-auto py-10 px-10 border-2 border-indigo-600 shadow-lg rounded-lg mt-2">
         <h3 className="text-center pt-4 pb-10 text-2xl font-bold text-indigo-600">
           Create your account
         </h3>
