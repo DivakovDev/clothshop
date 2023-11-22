@@ -13,7 +13,7 @@ export const ProdHero = ({
   }
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-6 sm:max-w-xl sm:px-6 lg:max-w-7xl lg:px-8">
+    <div className="mx-auto mb-20 max-w-2xl px-4 py-6 sm:max-w-xl sm:px-6 lg:max-w-7xl lg:px-8">
       {collectionTitle && (
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
           <div className="text-center">

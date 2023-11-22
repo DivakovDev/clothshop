@@ -56,7 +56,7 @@ export default function Collection({ params } : any) {
 
 
   return (
-    <div>
+    <div >
       <ProdHero products={products} collectionTitle={collectionData.collection.title} />
     </div>
   );

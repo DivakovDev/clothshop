@@ -12,9 +12,11 @@ export default async function Product({ params }: any) {
     `https://www.tenthousand.cc/products/${params.handle}.json`
   );
   const productData: ProductData = await responseData.json();
-  
+
+  console.log(productData.product);
+
   return (
-    <div className="bg-white">
+    <div className="bg-wite">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-2 lg:gap-x-8">
         {/* Product details */}
         <div className="lg:max-w-lg lg:self-end">
@@ -26,16 +28,33 @@ export default async function Product({ params }: any) {
           <VariantSelector product={productData} />
         </div>
 
-        {/* Product image */}
+        {/* Main Product image */}
         <div className="mt-10 lg:mt-0 lg:col-start-2 lg:row-span-2 lg:self-center">
           <div className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden">
             <Image
               src={productData.product.images[0].src}
               alt={productData.product.title}
               className="w-full h-full object-center object-cover"
-              width={400}
-              height={400}
+              width={640}
+              height={543}
             />
+          </div>
+          {/* Additional Product images */}
+          <div className="mt-4 w-full h-1/4 grid grid-cols-3 overflow-hidden gap-4">
+            {productData.product.images.slice(1).map((image) => (
+              <div
+                key={image.id}
+                className="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden"
+              >
+                <Image
+                  src={image.src}
+                  alt={productData.product.title}
+                  className="w-full h-full object-center object-cover"
+                  width={780}
+                  height={710}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
