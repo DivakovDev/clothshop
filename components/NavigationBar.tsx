@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -79,9 +79,60 @@ export const ShortsMegamenuSections: MenuSection[] = [
     ],
   },
 ];
+export const shirtsMenuSections: MenuSection[] = [
+  {
+    title: "SHIRTS",
+    items: [
+      {
+        name: "Versatile Shirt",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Versatile Tank",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Durable Shirt",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Lightweight Shirt",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Versatile Long Sleeve Shirt",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Lightweight Tank",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Tactical Shirt",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Recover Shirt",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+      {
+        name: "Fight Rash Guard",
+        description: "", // Add a suitable description
+        href: "#",
+      },
+    ],
+  },
+];
 
-export const NavigationBar = ()  => {
-
+export const NavigationBar = () => {
   const [activeItem, setActiveItem] = useState<string | null>(null);
 
   return (
@@ -179,7 +230,7 @@ export const NavigationBar = ()  => {
                     >
                       {" "}
                       {/* Mega Menu */}
-                      <div className="grid py-4 px-4 mx-auto text-gray-900 md:grid-cols-2 lg:grid-cols-4 md:px-6 ">
+                      <div className="grid grid-cols-1 py-4 px-4 mx-auto text-gray-900 md:px-6 ">
                         {ShortsMegamenuSections.map((section, sectionIndex) => (
                           <div key={sectionIndex} className="mb-4">
                             <h3 className="text-lg font-bold mb-2">
