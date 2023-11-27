@@ -75,11 +75,10 @@ const VariantSelector = (props: any) => {
 
   return (
     <section aria-labelledby="information-heading" className="mt-4">
-      <h2 id="information-heading" className="sr-only">
-        Product information
-      </h2>
+      {/* Variants Swatches */}
       <div>
-        {variant ? (
+        {variant >= 1 ? (
+          // If there are variants, display color and size swatches
           <>
             {/* Color Swatches */}
             <div>
@@ -131,14 +130,32 @@ const VariantSelector = (props: any) => {
             </div>
           </>
         ) : (
-          ""
+          // If there are no available variants
+          <>
+            {/* Color Swatches */}
+            <div>
+              <h3 className="mb-2 text-lg font-medium text-gray-900">Color</h3>
+              <div className="flex space-x-2">
+              <h3 className="p-2 bg-gray-700 line-through text-red-500">No Colors Availlable</h3> 
+              </div>
+            </div>
+
+            {/* Size Swatches */}
+            <div className="mt-4">
+              <h3 className="mb-2 text-lg font-medium text-gray-900">Size</h3>
+              <div className="flex space-x-2">
+                 <h3 className="p-2 bg-gray-700 line-through text-red-500">No Sizes Availlable</h3> 
+              </div>
+            </div>
+          </>
         )}
       </div>
       <div className="flex items-center mt-6">
+        {/* Product Price */}
         <p className="text-lg text-gray-900 sm:text-xl">
           ${selectedVariant.price}
         </p>
-
+          {/* Product rating Section */}
         <div className="ml-4 pl-4 border-l border-gray-300">
           <h2 className="sr-only">Reviews</h2>
           <div className="flex items-center">
@@ -152,17 +169,18 @@ const VariantSelector = (props: any) => {
           </div>
         </div>
       </div>
-
+      {/* Product Description */}
       <div className="mt-4 space-y-6">
         <p className="text-base text-gray-500">
           {" "}
           {product.body_html.replace(/(<([^>]+)>)/gi, "")}{" "}
         </p>
       </div>
-
+      {/* Product Stock Message*/}
       <div className="mt-6 flex items-center">
         <p className="ml-2 text-sm text-gray-500">{stockMessage}</p>
       </div>
+      {/* Quantity Swatch */}
       <div className="mt-4 flex flex-col items-center justify-center">
         <label
           htmlFor="quantity"

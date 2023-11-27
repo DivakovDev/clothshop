@@ -9,6 +9,10 @@ export default function Product({ params }: any) {
   const [productData, setProductData] = useState<ProductData | null>(null); // State for storing product data
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const handleThumbnailClick = (index: number) => {
+    setCurrentIndex(index);
+  };
+
   const goLeft = () => {
     setCurrentIndex((prevIndex) => 
     (prevIndex > 0 ? prevIndex - 1 : 0)
@@ -21,7 +25,6 @@ export default function Product({ params }: any) {
       // Handle the case when productData is null or the images array is empty
       return;
     }
-  
     setCurrentIndex((prevIndex) =>
       prevIndex < productData.product.images.length - 4 ? prevIndex + 1 : 0
     );
@@ -60,21 +63,21 @@ export default function Product({ params }: any) {
           </div>
           <VariantSelector product={productData} />
         </div>
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-10">
           {/* Main Image Section */}
-          <div className="w-full aspect-w-1 aspect-h-1">
+          <div className="w-full border-2 aspect-w-1 aspect-h-1">
             <Image
-              src={productData.product.images[0].src}
+              src={productData.product.images[currentIndex].src}
               alt="Selected Product Image"
-              className="w-full h-full object-center object-cover sm:rounded-lg"
-              width={640}
-              height={537}
+              className="w-full h-full object-center object-cover"
+              width={720}
+              height={720}
             />
           </div>
 
            {/* Image selector */}
-           <div className="flex flex-row w-full h-28 justify-center items-center mt-10">
-          <button className="p-2 w-16 h-full bg-indigo-600 text-white font-bold border rounded-l-lg" onClick={goLeft}>left</button>
+           <div className="flex flex-row w-full h-28 justify-center items-center">
+          <button className="p-2 w-16 h-full bg-blue-600 text-white text-2xl font-extrabold border rounded-bl-lg" onClick={goLeft}>←</button>
           <div className="w-full h-full max-w-2xl mx-auto sm:block lg:max-w-none">
             
             <div className="grid grid-cols-4 grid-rows-1">
@@ -93,7 +96,7 @@ export default function Product({ params }: any) {
               </div>
   
             </div>
-            <button className="p-2 w-16 h-full bg-indigo-600 text-white font-bold rounded-r-lg" onClick={goRight}>right</button>
+            <button className="p-2 w-16 h-full bg-blue-600 text-white text-2xl font-extrabold rounded-br-lg" onClick={goRight}>→</button>
 
           </div>
           
