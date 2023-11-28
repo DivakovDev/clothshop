@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ProdHero } from "@/components";
+import { ProdHero } from "@/components/ProductsHero";
 import { PagesData, Product } from "@/types";
 import Image from "next/image";
 
