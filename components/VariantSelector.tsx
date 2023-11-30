@@ -77,7 +77,7 @@ const VariantSelector = (props: any) => {
     <section aria-labelledby="information-heading" className="mt-4">
       {/* Variants Swatches */}
       <div>
-        {variant >= 1 ? (
+        {variant ? (
           // If there are variants, display color and size swatches
           <>
             {/* Color Swatches */}
