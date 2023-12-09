@@ -1,11 +1,13 @@
 "use client";
 
+import { options } from "@/app/api/auth/[...nextauth]/options";
 import { useEffect, useState } from "react";
 import { ProdHero } from "./ProductsHero";
 import Image from "next/image";
 import { ProductListData, Product } from "@/types/index"; // Make sure to import your types
+import { getServerSession } from "next-auth/next";
 
-export const Hero = () => {
+export const Hero = async () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -27,15 +29,21 @@ export const Hero = () => {
     fetchData();
   }, []);
 
+  const session = await getServerSession(options)
+
   return (
     <div className="bg-white">
       <div className="relative overflow-hidden bg-white">
         <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
             <div className="sm:max-w-lg">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Summer styles are finally here
-              </h1>
+              <div>
+                {session ? (
+                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Hello {session.user as string}, your summer styles are finally here</h1>
+                ): (
+                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Hello there, your summer styles are finally here</h1>
+                )}
+              </div>
               <p className="mt-4 text-xl text-gray-500">
                 This year, our new summer collection will shelter you from the
                 harsh elements of a world that doesn&apos;t care if you live or
