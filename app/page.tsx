@@ -1,11 +1,15 @@
 import React from 'react';
+import { authOptions } from './api/auth/[...nextauth]/route';
+import { getServerSession } from 'next-auth';
 
-import { Hero } from '@/components/MainHero';
+import { MainHero } from '@/components/MainHero';
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
   return (
    <>
-   <Hero />
+   <MainHero />
+   <pre>{JSON.stringify(session)}</pre>
    </> 
   )
 }

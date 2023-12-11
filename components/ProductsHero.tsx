@@ -1,13 +1,31 @@
-import Image from "next/image";
+'use client';
 
-export const ProdHero = ({
-  products,
-  collectionTitle,
-}: {
-  products: any;
-  collectionTitle?: string;
-}) => {
-  // Check if products data is available
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { Product, ProductListData } from "@/types/index";
+
+export const ProdHero = ({ collectionTitle }: { collectionTitle?: string }) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://www.tenthousand.cc/products.json?limit=8`
+        );
+        if (!response.ok) {
+          throw new Error(`Error fetching data: ${response.statusText}`);
+        }
+        const rawData: ProductListData = await response.json();
+        setProducts(rawData.products);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   if (!products || products.length === 0) {
     return <div>No products found</div>;
   }

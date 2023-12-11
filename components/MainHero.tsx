@@ -1,49 +1,15 @@
-"use client";
-
-import { options } from "@/app/api/auth/[...nextauth]/options";
-import { useEffect, useState } from "react";
 import { ProdHero } from "./ProductsHero";
 import Image from "next/image";
-import { ProductListData, Product } from "@/types/index"; // Make sure to import your types
-import { getServerSession } from "next-auth/next";
 
-export const Hero = async () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://www.tenthousand.cc/products.json?limit=8`
-        );
-        if (!response.ok) {
-          throw new Error(`Error fetching data: ${response.statusText}`);
-        }
-        const rawData: ProductListData = await response.json();
-        setProducts(rawData.products); // Assuming your response has a 'products' field
-      } catch (error) {
-        console.error("Error fetching product data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  const session = await getServerSession(options)
-
+export const MainHero = () => {
+  
   return (
     <div className="bg-white">
       <div className="relative overflow-hidden bg-white">
         <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
             <div className="sm:max-w-lg">
-              <div>
-                {session ? (
-                  <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Hello {session.user as string}, your summer styles are finally here</h1>
-                ): (
                   <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Hello there, your summer styles are finally here</h1>
-                )}
-              </div>
               <p className="mt-4 text-xl text-gray-500">
                 This year, our new summer collection will shelter you from the
                 harsh elements of a world that doesn&apos;t care if you live or
@@ -153,7 +119,7 @@ export const Hero = async () => {
         <h2 className=" ml-40 text-2xl font-bold tracking-tight text-gray-900">
           Customers also purchased
         </h2>
-        <ProdHero products={products} />
+        <ProdHero />
       </div>
     </div>
   );
